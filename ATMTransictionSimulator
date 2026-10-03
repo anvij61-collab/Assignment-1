@@ -1,0 +1,54 @@
+import java.util.Scanner;
+public class ATMTransictionSimulator {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter password:");
+        int password = sc.nextInt();
+
+        if(password == 1234){
+            System.out.println("Pleas press D -> deposit");
+            System.out.println("Pleas press W -> withdraw");
+            System.out.println("Pleas press B -> check balance");
+            System.out.println("Pleas press E -> Exit");
+        }
+        if(password != 1234){
+            System.out.println("Invalid password");
+        }
+
+        int balance = 100000;
+        char character = sc.next().charAt(0);
+
+        while(character != 'E'){
+            if(character == 'D'){
+                System.out.print("Enter amount to deposit:");
+                int depositAmount = sc.nextInt();
+                balance += depositAmount;
+                System.out.println("Deposited: " + depositAmount);
+            }
+
+            if(character == 'W'){
+                System.out.print("Enter amount to withdraw:");
+                int withdrawAmount = sc.nextInt();
+                if(withdrawAmount <= balance){
+                    balance -= withdrawAmount;
+                    System.out.println("Withdrawn: " + withdrawAmount);
+                } else {
+                    System.out.println("Insufficient balance");
+                }
+            }
+
+            if(character == 'B'){
+                System.out.println("Current balance: " + balance);
+            }
+
+            if(character == 'E'){
+                System.out.println("Exit");
+            }
+
+            System.out.println("Total balance: " + balance);
+            
+            character = sc.next().charAt(0);
+        }
+        System.out.println("Thank you for using our ATM service");
+    }
+}
