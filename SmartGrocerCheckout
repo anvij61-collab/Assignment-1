@@ -1,0 +1,46 @@
+import java.util.Scanner;
+
+public class SmartGrocerCheckout {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the number of items: ");
+        int n = sc.nextInt();
+
+        double finalAmount = 0;
+
+        for (int i = 0; i < n; i++) {
+        System.out.print("Enter the amount: ");
+        int amount = sc.nextInt();
+        System.out.print("Enter Quantity: ");
+        int quantity = sc.nextInt();
+        
+        finalAmount += amount * quantity;
+        }
+
+double discount = 0;
+
+        if (finalAmount <1000){
+            discount = 0;
+        }
+        else if (finalAmount >= 1000 && finalAmount < 5000) {
+            discount = finalAmount * 0.05;
+        } 
+        else if (finalAmount >= 5000 && finalAmount < 10000) {
+            discount = finalAmount * 0.10;
+        } 
+        else if (finalAmount >= 10000) {
+            discount = finalAmount * 0.15;
+        }
+
+        double discountedAmount = finalAmount - discount;
+        double tax = discountedAmount * 0.05;
+        double total = discountedAmount + tax;
+
+        System.out.println("Total Amount: " + finalAmount);
+        System.out.println("Discount: " + discount);
+        System.out.println("Tax: " + tax);
+        System.out.println("Final Amount: " + total);
+
+        sc.close();
+    }
+}
