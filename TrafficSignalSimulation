@@ -1,0 +1,46 @@
+import java.util.Scanner;
+
+public class TrafficSignalSimulation {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter rounds: ");
+        int n = sc.nextInt();
+
+        int totalPassed = 0;
+        int queue = 0;
+
+        for (int i = 1; i <= n; i++) {
+
+            System.out.print("Enter the traffic signal color (R, Y, G): ");
+            String signal = sc.next();
+
+            System.out.print("Enter no. of vehicles waiting: ");
+            int vehiclesWaiting = sc.nextInt();
+
+            queue += vehiclesWaiting;
+
+            int allowedToPass = 0;
+
+            if (signal.equalsIgnoreCase("R")) {
+                allowedToPass = 0;
+            } 
+            else if (signal.equalsIgnoreCase("Y")) {
+                allowedToPass = 2;
+            } 
+            else if (signal.equalsIgnoreCase("G")) {
+                allowedToPass = 10;
+            }
+
+            int passed = Math.min(allowedToPass, queue);    
+            queue -= passed;
+            totalPassed += passed;
+
+            System.out.println("Cycle " + i + ": Passed = " 
+                    + passed + ", Remaining = " + queue);
+        }
+
+        System.out.println("Total Passed: " + totalPassed);
+        System.out.println("Final Queue: " + queue);
+    }
+}
