@@ -1,0 +1,51 @@
+import java.util.Scanner;
+public class CricketTournamentScoreAnalyzer {
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of matches: ");
+        int n = sc.nextInt();
+        int win =0;
+        int loss=0;
+        int tie =0;
+        int points =0;
+        int highestScore = 0;
+        int totalScore = 0;
+        
+        for(int i = 1;i<=n; i++){
+
+            System.out.print("Enter score for match " + i + ": ");
+            int teamScore = sc.nextInt();
+            System.out.print("Enter score for opponent team in match " + i + ": ");
+            int opponentScore = sc.nextInt();
+
+            totalScore += teamScore;
+
+            if(teamScore > highestScore){
+                highestScore = teamScore;
+            }
+
+            if(teamScore > opponentScore){
+                System.out.println("Match " + i + ": Team won");
+                win++;
+                points += 2;
+            } 
+            else if(teamScore < opponentScore){
+                System.out.println("Match " + i + ": Team lost");
+                loss++;
+                points += 0;
+            } 
+            else {
+                System.out.println("Match " + i + ": Match drawn");
+                tie++;
+                points += 1;
+            }
+        }
+        System.out.println("Total matches: " + n);
+        System.out.println("Matches won: " + win);
+        System.out.println("Matches lost: " + loss);
+        System.out.println("Matches drawn: " + tie);
+        System.out.println("Total points: " + points);
+        System.out.println("Highest score: " + highestScore);
+        System.out.println("Total score across all matches: " + totalScore);
+    }
+}
