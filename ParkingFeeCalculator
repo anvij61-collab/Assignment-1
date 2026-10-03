@@ -1,0 +1,44 @@
+import java.util.Scanner;
+
+public class ParkingFeeCalculator {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int total = 0;
+
+        for (int i = 0; i < n; i++) {
+            char vehicleType = sc.next().charAt(0);
+            int hours = sc.nextInt();
+
+            int fee = 0;
+
+            if (vehicleType == 'C') {
+                if (hours <= 2) {
+                    fee = hours * 30;
+                } else {
+                    fee = 60 + (hours - 2) * 20;
+                }
+            }
+            else if (vehicleType == 'B') {
+                if (hours <= 2) {
+                    fee = hours * 15;
+                } else {
+                    fee = 30 + (hours - 2) * 10;
+                }
+            }
+            else if (vehicleType == 'T') {
+                if (hours <= 2) {
+                    fee = hours * 50;
+                } else {
+                    fee = 100 + (hours - 2) * 40;
+                }
+            }
+
+            total += fee;
+        }
+
+        System.out.println("Total Collection: " + total);
+        sc.close();
+    }
+}
